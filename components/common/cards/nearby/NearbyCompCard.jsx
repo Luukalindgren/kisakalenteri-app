@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 
-import styles from "./popularcompcard.style";
+import styles from "./nearbycompcard.style";
 
-const PopularCompCard = ({ item, selectedJob, handleCardPress }) => {
+const NearbyCompCard = ({ item, selectedJob, handleCardPress }) => {
   return (
     <TouchableOpacity
       style={styles.container(selectedJob, item)}
@@ -22,4 +22,4 @@ const PopularCompCard = ({ item, selectedJob, handleCardPress }) => {
   );
 };
 
-export default PopularCompCard;
+export default NearbyCompCard;

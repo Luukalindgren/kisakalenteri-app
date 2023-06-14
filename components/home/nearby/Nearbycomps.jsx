@@ -6,13 +6,14 @@ import {
   FlatList,
   ActivityIndicator,
 } from "react-native";
-import styles from "./popularcomps.style";
+import styles from "./nearbycomps.style";
 import { useRouter } from "expo-router";
 import { COLORS, SIZES } from "../../../constants";
-import PopularCompCard from "../../common/cards/popular/PopularCompCard";
+import NearbyCompCard from "../../common/cards/nearby/NearbyCompCard";
 import useFetch from "../../../hook/useFetch";
 
-const Popularcomps = () => {
+const Nearbycomps = () => {
+  const [selectedComp, setSelectedComp] = useState();
   const router = useRouter();
   const { data, isLoading, error } = useFetch({ query: "" });
 
@@ -21,10 +22,12 @@ const Popularcomps = () => {
     item.area.includes("Varsinais-Suomi")
   );
 
+  const handleCardPress = (item) => {};
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Popular Competitions</Text>
+        <Text style={styles.headerTitle}>Kisat Lähellä</Text>
         <TouchableOpacity>
           <Text style={styles.headerBtn}>Show All</Text>
         </TouchableOpacity>
@@ -38,7 +41,7 @@ const Popularcomps = () => {
         ) : (
           <FlatList
             data={filteredData}
-            renderItem={({ item }) => <PopularCompCard item={item} />}
+            renderItem={({ item }) => <NearbyCompCard item={item} />}
             keyExtractor={(item) => item?._id}
             horizontal
             contentContainerStyle={{ columnGap: SIZES.medium }}
@@ -49,4 +52,4 @@ const Popularcomps = () => {
   );
 };
 
-export default Popularcomps;
+export default Nearbycomps;

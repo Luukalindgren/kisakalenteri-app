@@ -3,12 +3,7 @@ import { useState } from "react";
 import { View, Text, ScrollView, SafeAreaView } from "react-native";
 
 import { COLORS, icons, images, SIZES } from "../constants";
-import {
-  Nearbyjobs,
-  Popularjobs,
-  ScreenHeaderBtn,
-  Welcome,
-} from "../components";
+import { Allcomps, Nearbycomps, ScreenHeaderBtn, Welcome } from "../components";
 
 const Home = () => {
   const router = useRouter();
@@ -32,8 +27,8 @@ const Home = () => {
         <View style={{ flex: 1, padding: SIZES.medium }}>
           <Welcome />
 
-          <Popularjobs/>
-          <Nearbyjobs/>
+          <Nearbycomps />
+          <Allcomps />
         </View>
       </ScrollView>
     </SafeAreaView>
