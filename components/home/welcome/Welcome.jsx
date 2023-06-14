@@ -12,11 +12,31 @@ import styles from "./welcome.style";
 import { useRouter } from "expo-router";
 import { icons, SIZES } from "../../../constants";
 
-const jobTypes = ["Täysiaikainen", "Osa-aikainen", "Urakoitsija"];
+const areas = [
+  "Varsinais-Suomi",
+  "Ahvenanmaa",
+  "Uusimaa",
+  "Kanta-Häme",
+  "Satakunta",
+  "Pirkanmaa",
+  "Päijät-Häme",
+  "Kymenlaakso",
+  "Etelä-Karjala",
+  "Etelä-Savo",
+  "Keski-Suomi",
+  "Pohjois-Savo",
+  "Pohjois-Karjala",
+  "Kainuu",
+  "Pohjois-Pohjanmaa",
+  "Keski-Pohjanmaa",
+  "Lappi",
+  "Etelä-Pohjanmaa",
+  "Pohjanmaa",
+];
 
 const Welcome = () => {
   const router = useRouter();
-  const [activeJobType, setActiveJobType] = useState(jobTypes[0]);
+  const [activeArea, setActiveArea] = useState(areas[0]);
 
   return (
     <View>
@@ -43,16 +63,16 @@ const Welcome = () => {
       </View>
       <View style={styles.tabsContainer}>
         <FlatList
-          data={jobTypes}
+          data={areas}
           renderItem={({ item }) => (
             <TouchableOpacity
-              style={styles.tab(activeJobType, item)}
+              style={styles.tab(activeArea, item)}
               onPress={() => {
-                setActiveJobType(item);
+                setActiveArea(item);
                 router.push(`/search/${item}`);
               }}
             >
-              <Text style={styles.tabText(activeJobType, item)}>{item}</Text>
+              <Text style={styles.tabText(activeArea, item)}>{item}</Text>
             </TouchableOpacity>
           )}
           keyExtractor={(item) => `${item}`}
