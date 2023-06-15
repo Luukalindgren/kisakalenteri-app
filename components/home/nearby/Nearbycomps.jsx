@@ -22,7 +22,9 @@ const Nearbycomps = () => {
     item.area.includes("Varsinais-Suomi")
   );
 
-  const handleCardPress = (item) => {};
+  const handleCardPress = (item) => {
+    () => router.push(`/comp-details/${item.id}`);
+  };
 
   return (
     <View style={styles.container}>
@@ -41,7 +43,9 @@ const Nearbycomps = () => {
         ) : (
           <FlatList
             data={filteredData}
-            renderItem={({ item }) => <NearbyCompCard item={item} />}
+            renderItem={({ item }) => (
+              <NearbyCompCard item={item} handleCardPress={handleCardPress} />
+            )}
             keyExtractor={(item) => item?._id}
             horizontal
             contentContainerStyle={{ columnGap: SIZES.medium }}
