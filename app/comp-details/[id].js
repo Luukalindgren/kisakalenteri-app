@@ -10,15 +10,20 @@ import {
 } from "react-native";
 
 import {
-  JobAbout,
-  JobFooter,
-  JobTabs,
+  Tabs,
   ScreenHeaderBtn,
-  Specifics,
   Competition,
+  About,
 } from "../../components";
 import { COLORS, icons, SIZES } from "../../constants";
 import useFetch from "../../hook/useFetch";
+
+const tabs = [
+  "Lisätiedot",
+  "Sääennuste",
+  "Kisakartta",
+  "Ajo-ohjeet",
+];
 
 const CompDetails = () => {
   const params = useSearchParams();
@@ -32,8 +37,26 @@ const CompDetails = () => {
   console.log(filteredData);
 
   const [refreshing, setRefreshing] = useState(false);
+  const [activeTab, setActiveTab] = useState(tabs[0]);
 
   const onRefresh = () => {};
+
+  const displayTabContent = () => {
+    switch (activeTab) {
+      case "Lisätiedot":
+        return (
+          <About title="Lisätiedot" location={filteredData[0].location} time={filteredData[0].time} ID={filteredData[0].id}/>
+        );
+      case "Sääennuste":
+        break;
+      case "Kisakartta":
+        break;
+      case "Ajo-ohjeet":
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
@@ -71,13 +94,18 @@ const CompDetails = () => {
           ) : (
             <View style={{ padding: SIZES.medium, paddingBottom: 100 }}>
               <Competition
-                compName={filteredData.name}
-                compLocation={filteredData.location}
-                compArea={filteredData.area}
-                compTime={filteredData.time}
-                compID={filteredData.id}
+                compName={filteredData[0].name}
+                compArea={filteredData[0].area}
+                compTime={filteredData[0].time}
+                compID={filteredData[0].id}
               />
-              <JobTabs />
+              <Tabs
+                tabs={tabs}
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
+              />
+
+              {displayTabContent()}
             </View>
           )}
         </ScrollView>
