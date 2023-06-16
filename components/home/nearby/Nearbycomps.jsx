@@ -23,7 +23,7 @@ const Nearbycomps = () => {
   );
 
   const handleCardPress = (item) => {
-    () => router.push(`/comp-details/${item.id}`);
+    router.push(`/comp-details/${item.id}`);
   };
 
   return (

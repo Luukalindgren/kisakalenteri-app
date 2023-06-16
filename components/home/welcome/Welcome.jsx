@@ -51,6 +51,7 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
             value={searchTerm}
             onChangeText={(text) => setSearchTerm(text)}
             placeholder="Millaista kisaa etsit?"
+            placeholderTextColor="#83829A"
           />
         </View>
         <TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
