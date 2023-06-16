@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   View,
   Text,
@@ -13,7 +12,6 @@ import NearbyCompCard from "../../common/cards/nearby/NearbyCompCard";
 import useFetch from "../../../hook/useFetch";
 
 const Nearbycomps = () => {
-  const [selectedComp, setSelectedComp] = useState();
   const router = useRouter();
   const { data, isLoading, error } = useFetch({ query: "" });
 
