@@ -27,9 +27,13 @@ const JobSearch = () => {
       };
 
       const response = await axios.request(options);
-      const filtered = response.data.filter((item) =>
-        item.area.toLowerCase().includes(params.id.toLowerCase())
-      );
+      const searchByArea = response.data.filter((item) =>
+      item.area.toLowerCase().includes(params.id.toLowerCase())
+    );
+      const searchByName = response.data.filter((item) =>
+      item.name.toLowerCase().includes(params.id.toLowerCase())
+    );
+      const filtered = searchByArea.concat(searchByName);
       console.log(filtered);
       setSearchResult(filtered);
     } catch (error) {
