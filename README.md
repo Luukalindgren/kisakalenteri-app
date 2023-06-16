@@ -1,14 +1,6 @@
-# Expo Router Example
+# Mobile App for "Competition Calendar"
 
-Use [`expo-router`](https://expo.github.io/router) to build native navigation using files in the `app/` directory.
+Mobile App created with React Native. Work in progress, but hosted in Expo: https://expo.dev/@luukalindgren/kisakalenteri-app?serviceType=classic&distribution=expo-go . 
+App is previewable only with Android phones.
 
-## 🚀 How to use
-
-```sh
-npx create-expo-app -e with-router
-```
-
-## 📝 Notes
-
-- [Expo Router: Docs](https://expo.github.io/router)
-- [Expo Router: Repo](https://github.com/expo/router)
+![kisakalenteri-app](https://github.com/Luukalindgren/kisakalenteri-app/assets/70708962/2eddd3db-7440-4ea5-948e-b9426c5c4327)
