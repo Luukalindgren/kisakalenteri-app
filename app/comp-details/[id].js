@@ -14,16 +14,12 @@ import {
   ScreenHeaderBtn,
   Competition,
   About,
+  Footer,
 } from "../../components";
 import { COLORS, icons, SIZES } from "../../constants";
 import useFetch from "../../hook/useFetch";
 
-const tabs = [
-  "Lisätiedot",
-  "Sääennuste",
-  "Kisakartta",
-  "Ajo-ohjeet",
-];
+const tabs = ["Lisätiedot", "Sääennuste", "Ratakartta", "Ajo-ohjeet"];
 
 const CompDetails = () => {
   const params = useSearchParams();
@@ -45,14 +41,18 @@ const CompDetails = () => {
     switch (activeTab) {
       case "Lisätiedot":
         return (
-          <About title="Lisätiedot" location={filteredData[0].location} time={filteredData[0].time} ID={filteredData[0].id}/>
+          <About
+            title="Lisätiedot"
+            location={filteredData[0].location ?? "Ei tietoja"}
+            time={filteredData[0].time ?? "Ei tietoja"}
+          />
         );
       case "Sääennuste":
-        break;
-      case "Kisakartta":
-        break;
+        return <></>;
+      case "Ratakartta":
+        return <></>;
       case "Ajo-ohjeet":
-        break;
+        return <></>;
       default:
         break;
     }
@@ -96,8 +96,6 @@ const CompDetails = () => {
               <Competition
                 compName={filteredData[0].name}
                 compArea={filteredData[0].area}
-                compTime={filteredData[0].time}
-                compID={filteredData[0].id}
               />
               <Tabs
                 tabs={tabs}
@@ -109,6 +107,7 @@ const CompDetails = () => {
             </View>
           )}
         </ScrollView>
+        <Footer comp={filteredData[0]} />
       </>
     </SafeAreaView>
   );
